@@ -4,5 +4,6 @@ Sneller's performance derives from pervasive use of SIMD, specifically AVX-512 a
 
 Sneller is fully stateless and all state is stored exclusively on object storage. There are no other dependencies, such as meta-databases or key/value stores, to install, manage and maintain. This allows Sneller to scale very dynamically to adapt for varying query loads.
 
+- Community - https://slack.sneller.io
 - Documentation - https://docs.sneller.io
 - Website - https://sneller.io
