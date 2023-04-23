@@ -1,10 +1,16 @@
-Sneller is a cloud-native, serverless SQL engine designed specifically for JSON. With Sneller, you can run interactive SQL on large TB-sized datasets of deeply nested semi-structured JSON stored on S3. Target use cases are event data pipelines such as Security, Observability, Ops, User Events and Sensor/IoT.
+Sneller is a high-performance SQL engine built to analyze
+petabyte-scale un-structured logs and other event data.
 
-Sneller's performance derives from pervasive use of SIMD, specifically AVX-512 assembly in its 300+ core primitives. The main engine is capable of processing many lanes in parallel per core for very high processing throughputs. Combined with the fact that Sneller's main 'API' is SQL (with JSON output results), this greatly simplifies data processing pipelines.
+Here are a couple major differentiators between Sneller and other SQL solutions:
 
-Sneller is fully stateless and all state is stored exclusively on object storage. There are no other dependencies, such as meta-databases or key/value stores, to install, manage and maintain. This allows Sneller to scale very dynamically to adapt for varying query loads.
+ - Sneller is designed to use cloud object storage as its **only** backing store.
+ - Sneller's SQL VM is [implemented in AVX-512 assembly](https://sneller.io/blog/2023/03/22/sql-vm-in-avx-512/).
+   Medium-sized compute clusters can provide throughput in excess of **terabytes per second**.
+ - Sneller is [completely schemaless](https://sneller.io/blog/2023/03/21/why-schemaless/).
+   No more ETL-ing your data! Heterogeneous JSON data can be ingested directly.
+ - Sneller uses a [hybrid approach between columnar and row-oriented data layouts](https://sneller-dev.io/blog/2023/03/27/zion-format/)
+   to provide lightweight ingest, low storage footprint, and super fast scanning speeds.
 
-- Community - https://slack.sneller.io
-- Documentation - https://docs.sneller.io
-- Website - https://sneller.io
-- Blog - https://github.com/SnellerInc/blogs
+[Sneller Cloud](https://console.sneller.io/register) gives you access to a hosted version of the Sneller SQL engine
+that runs directly on data stored entirely in **your S3 buckets**.
+Our cloud platform offers excellent performance and is priced at an extremely competitive \$150 **per petabyte** of data scanned.
